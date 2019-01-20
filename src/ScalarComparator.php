@@ -41,10 +41,11 @@ class ScalarComparator extends Comparator
      * @param float $delta        Allowed numerical distance between two values to consider them equal
      * @param bool  $canonicalize Arrays are sorted before comparison when set to true
      * @param bool  $ignoreCase   Case is ignored when set to true
+     * @param array $processed    List of already processed elements (used to prevent infinite recursion)
      *
      * @throws ComparisonFailure
      */
-    public function assertEquals($expected, $actual, $delta = 0.0, $canonicalize = false, $ignoreCase = false)
+    public function assertEquals($expected, $actual, $delta = 0.0, $canonicalize = false, $ignoreCase = false, array &$processed = [])
     {
         $expectedToCompare = $expected;
         $actualToCompare   = $actual;
